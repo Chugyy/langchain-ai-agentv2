@@ -12,7 +12,7 @@ Une API REST pour un agent conversationnel IA basé sur LangChain, facilement in
 
 > ***LE DISCORD 👉🏻 https://discord.gg/T6DCneUhD7***
 
-> ***TOUS LES OUTILS CONÇUS POUR L'AGENT : https://github.com/Chugyy/agent-tools***
+> ***TOUS LES OUTILS CONÇUS POUR L'AGENT 👉🏻 https://github.com/Chugyy/agent-tools***
 
 ## Guide de démarrage rapide
 
@@ -77,11 +77,58 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 #### 6. Tester l'API
 
+Voici quelques exemples pour tester les différents endpoints de l'API :
+
 ```bash
+# Message simple
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer admin-key-for-development" \
-  -d '{"message": "Bonjour, comment vas-tu?"}'
+  -d '{
+    "message": "Bonjour, comment vas-tu?"
+  }'
+
+# Message avec média
+curl -X POST http://localhost:8000/chat \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer admin-key-for-development" \
+  -d '{
+    "message": "Analyse cette image",
+    "media": [
+      {
+        "url": "https://example.com/image.jpg",
+        "reference_id": "image1",
+        "title": "Mon image",
+        "description": "Description optionnelle"
+      }
+    ]
+  }'
+
+# Récupérer l'historique d'une session
+curl -X GET http://localhost:8000/sessions/votre-session-id \
+  -H "Authorization: Bearer admin-key-for-development"
+
+# Mettre à jour la configuration d'une session
+curl -X PATCH http://localhost:8000/sessions/votre-session-id/config \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer admin-key-for-development" \
+  -d '{
+    "temperature": 0.8,
+    "model_name": "gpt-4"
+  }'
+
+# Générer une nouvelle clé API (admin seulement)
+curl -X POST http://localhost:8000/auth/keys \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer admin-key-for-development" \
+  -d '{
+    "scopes": ["chat"],
+    "expires_in_days": 30,
+    "rate_limit": 100
+  }'
+
+# Vérifier l'état de l'API
+curl -X GET http://localhost:8000/health
 ```
 
 ## Documentation de l'API
