@@ -86,7 +86,7 @@ class ToolsSettings(BaseSettings):
         "extract_media_content",
         # Outils communication
         "calculer_date"
-    ], env="ENABLED_TOOLS")
+        ], env="ENABLED_TOOLS")
     
     # Récupérer et parser la variable d'environnement ENABLED_TOOLS
     @validator('enabled', pre=True)
@@ -172,6 +172,7 @@ class Settings(BaseSettings):
     admin_api_key: str       = Field(admin_api_key, env="ADMIN_API_KEY")
     unipile_dsn: str         = Field("api.unipile.com", env="UNIPILE_DSN")
     whatsapp_account_id: Optional[str] = Field(None, env="WA_ACCOUNTID")
+    rapid_api_key: str = Field(env="RAPID_API_KEY")
 
     def check_api_keys(self) -> None:
         """
