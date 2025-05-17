@@ -9,7 +9,10 @@ Une API REST pour un agent conversationnel IA basé sur LangChain, facilement in
 - 🔑 Authentification par clé API
 - 🛠️ Sessions configurables (modèle, température, etc.)
 - 📊 Logging complet des interactions
-- 🐳 Support Docker pour déploiement
+
+> ***LE DISCORD 👉🏻 https://discord.gg/T6DCneUhD7***
+
+> ***TOUS LES OUTILS CONÇUS POUR L'AGENT : https://github.com/Chugyy/agent-tools***
 
 ## Guide de démarrage rapide
 
@@ -23,8 +26,8 @@ Une API REST pour un agent conversationnel IA basé sur LangChain, facilement in
 #### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/yourusername/agent-ia.git
-cd agent-ia
+git clone https://github.com/Chugyy/langchain-ai-agentv2.git
+cd langchain-ai-agentv2
 ```
 
 #### 2. Créer un environnement virtuel
@@ -52,13 +55,8 @@ Créez un fichier `.env` à la racine du projet avec le contenu suivant:
 ```
 # Configuration du LLM
 OPENAI_API_KEY=sk-votre-clé-api-openai
-LLM_NAME=gpt-4o-mini
-TEMPERATURE=0.0
-MAX_TOKENS=1000
-
-# Configuration de la mémoire
-MEMORY_TYPE=buffer
-SESSION_TTL_HOURS=24
+LLM_NAME=gpt-gpt-4-0613
+TEMPERATURE=0.7
 
 # Outils activés
 ENABLED_TOOLS=shout,file_loader
@@ -105,8 +103,6 @@ La configuration se fait via les variables d'environnement ou le fichier `.env`:
 - `OPENAI_API_KEY` - Votre clé API OpenAI
 - `LLM_NAME` - Le modèle à utiliser (ex: "gpt-4o-mini")
 - `TEMPERATURE` - Réglage de température pour la génération (0.0-1.0)
-- `MEMORY_TYPE` - Type de mémoire ("buffer" ou "summary")
-- `SESSION_TTL_HOURS` - Durée de vie des sessions
 - `ENABLED_TOOLS` - Liste des outils activés
 - `ADMIN_API_KEY` - Clé admin pour les opérations privilégiées
 
@@ -114,8 +110,8 @@ La configuration se fait via les variables d'environnement ou le fichier `.env`:
 
 Les outils de base inclus sont:
 
-- **shout** - Transformer un texte en majuscules
-- **file_loader** - Charger le contenu d'un fichier texte
+- **date** - Permet au LLM de caculer des dates
+- **media** - Charge tous les contenus possible envoyé au LLM en texte
 
 ## Structure du projet
 

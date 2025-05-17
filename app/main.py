@@ -14,7 +14,7 @@ def start():
         f"Starting server with configuration", 
         extra={
             "host": settings.api_host,
-            "port": "2222",
+            "port": settings.api_port,
             "environment": settings.environment,
             "llm": settings.llm.name
         }
@@ -24,7 +24,7 @@ def start():
     uvicorn.run(
         "app.api.server:app",
         host=settings.api_host,
-        port=2222,
+        port=settings.api_port,
         reload=settings.debug_mode,
         log_level="info" if settings.debug_mode else "warning"
     )
